@@ -1,0 +1,143 @@
+.adminContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.sidebar {
+  width: 260px;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarHeader {
+  height: 80px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--accent-cyan);
+}
+
+.navStack {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.navItem, .activeNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.navItem:hover {
+  background: var(--bg-glass);
+  color: var(--text-primary);
+}
+
+.activeNav {
+  background: rgba(0, 243, 255, 0.05);
+  color: var(--accent-cyan);
+  border-left-color: var(--accent-cyan);
+}
+
+.adminMain {
+  flex: 1;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mainHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.mainHeader h1 {
+  font-size: 2rem;
+  font-family: var(--font-space-grotesk);
+}
+
+.contentSection {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 30px;
+}
+
+.contentSection h2 {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emptyState {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.postItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s;
+}
+
+.postItem:hover {
+  transform: translateX(4px);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.postInfo h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.postDate {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.postActions {
+  display: flex;
+  gap: 12px;
+}
+
+.textBtn {
+  background: transparent;
+  border: none;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.textBtn:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.danger:hover {
+  color: var(--accent-pink);
+}

@@ -1,0 +1,75 @@
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatarGlass {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glow);
+  box-shadow: var(--shadow-neon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.contentCard {
+  width: 100%;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 40px;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.contentCard h2 {
+  color: var(--text-primary);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contentCard strong {
+  color: var(--text-primary);
+  background: var(--gradient-neon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.socialRow {
+  display: flex;
+  gap: 20px;
+}
+
+.socialRow a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--text-primary);
+}
+
+.socialRow a:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-neon);
+  color: var(--accent-cyan);
+}
