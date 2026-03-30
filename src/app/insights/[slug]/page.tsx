@@ -7,9 +7,11 @@ import CommentsSection from "@/components/comments/CommentsSection";
 
 const prisma = new PrismaClient();
 
-export default async function ArticlePage({ params }: { params: { slug: string } }) {
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  
   const post = await prisma.post.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
     include: { author: true },
   });
 

@@ -18,16 +18,16 @@ export default function Home() {
         >
           <div className={styles.badge}>
              <Terminal size={14} className={styles.badgeIcon} />
-             <span>Tony Jin / Independent Studio</span>
+             <span>Dulaidila / Design & Delivery Studio</span>
           </div>
           
           <h1 className={`${styles.title} font-geek`}>
-            Only the <span className="text-gradient">Paranoid</span> Survive.
+            Service <span className="text-gradient">Design</span> & Delivery.
           </h1>
           
           <p className={styles.description}>
-            We build digital experiences that live at the intersection of stunning aesthetics and solid engineering. 
-            Exploring low-code, productivity, and the fabric of the Internet.
+            We craft compelling service designs and ensure flawless end-to-end delivery. 
+            Transforming complex business challenges into vibrant, human-centric experiences.
           </p>
           
           <div className={styles.actionGroup}>
@@ -50,12 +50,46 @@ export default function Home() {
             animate={{ opacity: 1, scale: 1, rotateX: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <div className={styles.mockCode}>
-              <span className={styles.codeLine}>// dulaidila.com</span>
-              <span className={styles.codeLine}><span className={styles.keyword}>const</span> <span className={styles.variable}>brand</span> = <span className={styles.string}>"Geek & Vibrant"</span>;</span>
-              <span className={styles.codeLine}><span className={styles.keyword}>function</span> <span className={styles.function}>innovate</span>() &#123;</span>
-              <span className={styles.codeLine}>  <span className={styles.keyword}>return</span> buildFuture();</span>
-              <span className={styles.codeLine}>&#125;</span>
+            <div className={styles.serviceMap}>
+              <motion.div 
+                 className={`${styles.serviceNode} ${styles.nodeActive}`}
+                 initial={{ x: 20, opacity: 0 }}
+                 animate={{ x: 0, opacity: 1 }}
+                 transition={{ delay: 0.4 }}
+              >
+                 <div className={styles.nodeHeader}>
+                   <span className={styles.nodeStatus}>●</span>
+                   <span>Phase 1: Design Strategy</span>
+                 </div>
+                 <div className={styles.nodeBar}></div>
+                 <div className={`${styles.nodeBar} ${styles.nodeBarActive}`} style={{ width: '60%' }}></div>
+              </motion.div>
+              
+              <motion.div 
+                 className={styles.serviceNode}
+                 initial={{ x: 20, opacity: 0 }}
+                 animate={{ x: 0, opacity: 1 }}
+                 transition={{ delay: 0.6 }}
+              >
+                 <div className={styles.nodeHeader}>
+                   <span className={styles.nodeStatus} style={{ color: 'var(--accent-purple)'}}>●</span>
+                   <span>Phase 2: Architecture & UX</span>
+                 </div>
+                 <div className={styles.nodeBar} style={{ width: '80%' }}></div>
+              </motion.div>
+
+              <motion.div 
+                 className={styles.serviceNode}
+                 initial={{ x: 20, opacity: 0 }}
+                 animate={{ x: 0, opacity: 1 }}
+                 transition={{ delay: 0.8 }}
+              >
+                 <div className={styles.nodeHeader}>
+                   <span className={styles.nodeStatus} style={{ color: 'var(--text-muted)'}}>○</span>
+                   <span>Phase 3: Delivery</span>
+                 </div>
+                 <div className={styles.nodeBar} style={{ width: '30%' }}></div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

@@ -6,24 +6,24 @@ import styles from "./services.module.css";
 
 const services = [
   {
-    title: "Full-Stack Web Engineering",
-    desc: "Building high-performance, robust, and scalable web applications using React, Next.js, and modern serverless architectures.",
-    icon: <Code size={32} />
-  },
-  {
-    title: "Mobile App Development",
-    desc: "Crafting fluid cross-platform mobile experiences that feel native, utilizing React Native and Flutter.",
-    icon: <Smartphone size={32} />
-  },
-  {
-    title: "Vibrant UI/UX Design",
-    desc: "Designing interfaces that pop—utilizing Glassmorphism, neon accents, and geeky aesthetics to make products stand out.",
+    title: "Service Design & Strategy",
+    desc: "Mapping end-to-end user journeys, identifying pain points, and architecting seamless service blueprints that drive business value.",
     icon: <Palette size={32} />
   },
   {
-    title: "Low-Code & Automation Consulting",
-    desc: "Helping businesses accelerate delivery by adopting low-code platforms and AI-driven automation workflows.",
+    title: "Experience Delivery",
+    desc: "Translating strategic design into tangible, high-quality digital products through agile, iterative delivery methodologies.",
     icon: <Zap size={32} />
+  },
+  {
+    title: "UI/UX Architecture",
+    desc: "Crafting vibrant, intuitive interfaces that not only look stunning but ensure flawless accessibility and human-centric interaction.",
+    icon: <Smartphone size={32} />
+  },
+  {
+    title: "Agile Implementation",
+    desc: "Bringing designs to life with solid engineering practices, modern technical stacks, and seamless continuous integration.",
+    icon: <Code size={32} />
   }
 ];
 
@@ -44,7 +44,7 @@ export default function ServicesPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Dulaidila Independent Studio provides cutting-edge digital solutions at the intersection of stunning aesthetics and elite engineering.
+          Dulaidila Design & Delivery Studio provides cutting-edge digital solutions at the intersection of human-centric design and elite implementation.
         </motion.p>
       </div>
 

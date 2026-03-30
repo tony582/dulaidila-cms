@@ -63,7 +63,7 @@ export default function CommentsSection({ postId }: { postId: string }) {
     <div className={styles.wrapper}>
       <h3 className="font-geek" style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "32px", fontSize: "1.5rem" }}>
         <MessageSquare size={24} color="var(--accent-purple)" /> 
-        Geek Discussion
+        Community Discussion
       </h3>
 
       <div className={`${styles.formCard} glass-card`}>
@@ -72,7 +72,7 @@ export default function CommentsSection({ postId }: { postId: string }) {
             <User size={18} className={styles.inputIcon} />
             <input 
               type="text" 
-              placeholder="Your Hacker Alias (Name)" 
+              placeholder="Your Name / Organization" 
               value={name} 
               onChange={e => setName(e.target.value)} 
               required 
@@ -101,7 +101,7 @@ export default function CommentsSection({ postId }: { postId: string }) {
         <AnimatePresence>
           {comments.length === 0 ? (
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.emptyText}>
-              No discussions yet. Be the first to spark a conversation.
+              No discussions yet. Join the conversation below.
             </motion.p>
           ) : (
             comments.map((c, i) => (

@@ -14,7 +14,7 @@ export default async function InsightsPage() {
     <div className="container" style={{ padding: "100px 24px" }}>
       <div style={{ textAlign: "center", marginBottom: "60px" }}>
         <h1 className="font-geek" style={{ fontSize: "3rem", marginBottom: "16px" }}>Latest <span className="text-gradient">Insights</span></h1>
-        <p className="text-secondary">Explore thoughts on traditional coding, low-code platforms, and digital society.</p>
+        <p className="text-secondary">Explore thoughts on Service Design, Delivery frameworks, and digital innovation.</p>
       </div>
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "32px", maxWidth: "1000px", margin: "0 auto" }}>
