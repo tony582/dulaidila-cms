@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import styles from "./article.module.css";
+import CommentsSection from "@/components/comments/CommentsSection";
 
 const prisma = new PrismaClient();
 
@@ -38,11 +39,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
       />
       
       <div className={styles.footer}>
-        <div className="glass-card" style={{ padding: "30px", textAlign: "center", marginTop: "60px" }}>
-          <h3 className="font-geek" style={{ marginBottom: "16px", color: "var(--accent-cyan)" }}>Enjoyed this read?</h3>
-          <p style={{ color: "var(--text-secondary)" }}>Join the discussion and share your thoughts. Paranoid but passionate.</p>
-          {/* Comments injection section in Phase 5 */}
-        </div>
+        <CommentsSection postId={post.id} />
       </div>
     </article>
   );

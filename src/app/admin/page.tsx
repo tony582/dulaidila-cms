@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PenSquare, LayoutDashboard, MessageSquare, Briefcase } from "lucide-react";
 import styles from "./admin.module.css";
+import CommentsManager from "@/components/admin/CommentsManager";
 
 export default function AdminDashboard() {
   const [posts, setPosts] = useState([]);
@@ -55,6 +56,7 @@ export default function AdminDashboard() {
                 </div>
               ))
             )}
+            <CommentsManager />
           </div>
         </section>
       </main>
