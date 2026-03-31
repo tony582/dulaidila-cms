@@ -19,10 +19,10 @@ export default async function PortfolioPage() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "32px" }}>
         {portfolios.length > 0 ? (
           portfolios.map((p) => (
-            <div key={p.id} className="glass-card" style={{ padding: "24px", display: "flex", flexDirection: "column" }}>
-              {p.imageUrl && (
-                <div style={{ width: "100%", height: "200px", borderRadius: "12px", overflow: "hidden", marginBottom: "20px" }}>
-                  <img src={p.imageUrl} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            <div key={p.id} className="glass-card" style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }}>
+              {p.coverImage && (
+                <div style={{ width: "100%", height: "200px", borderRadius: "12px", overflow: "hidden" }}>
+                  <img src={p.coverImage} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
               )}
               <h3 className="font-geek" style={{ fontSize: "1.4rem", marginBottom: "12px", color: "var(--text-primary)" }}>{p.title}</h3>

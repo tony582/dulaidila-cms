@@ -1,0 +1,18 @@
+#!/usr/bin/expect -f
+set timeout 10
+set host "111.229.195.192"
+set user "ubuntu"
+set password "Chenlu19880425!"
+
+spawn ssh-copy-id -o StrictHostKeyChecking=no "$user\@$host"
+expect {
+    "(yes/no" {
+        send "yes\r"
+        exp_continue
+    }
+    "*assword:" {
+        send "$password\r"
+        exp_continue
+    }
+    eof
+}
