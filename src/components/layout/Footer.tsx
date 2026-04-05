@@ -53,8 +53,7 @@ export default function Footer() {
             justifyContent: "center",
             gap: "16px",
             fontSize: "0.78rem",
-            color: "var(--text-muted)",
-            opacity: 0.6,
+            color: "rgba(255,255,255,0.5)",
           }}
         >
           <span>© {year} dulaidila. All rights reserved.</span>
@@ -64,11 +63,16 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              color: "var(--text-muted)",
+              color: "rgba(255,255,255,0.7)",
               textDecoration: "none",
               fontFamily: "var(--font-jetbrains-mono, monospace)",
               fontSize: "0.75rem",
+              borderBottom: "1px solid rgba(255,255,255,0.2)",
+              paddingBottom: "1px",
+              transition: "color 0.2s",
             }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
           >
             沪ICP备20003294号-1
           </a>

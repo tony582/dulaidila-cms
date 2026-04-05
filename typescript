@@ -1,0 +1,40 @@
+Script started on Sun Apr  5 22:37:35 2026
+/dev/fd/12:3564: command not found: compdef
+[1m[7m%[27m[1m[0m                                           [0m[27m[24m[Jdulaidila@DulaiMacBook-Pro dulaidila % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                           [0m[27m[24m[Jdulaidila@DulaiMacBook-Pro dulaidila % [K[?2004hsssh  [K--o StrictHostKeyChecking=no ubuntu@111.229. [K1195.192 'bash -s' << 'EOF'[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h##!/bin/bash[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hmmkdir -p /var/www/dulaidila-cms/sc [Krripts[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hccat > /var/www/dulaidila-cms/scrip [Ktts/baidu_push.sh << 'SCRIPT'[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h##!/bin/bash[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hSSITE="https://dulaidila.com"[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hTTOKEN="GsC4EYEXHSXT6GnT"[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hBBAIDU_API="http://data.zz.baidu.co [Kmm/urls?site=${SITE}&token=${TOKEN}"[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004heecho "[$(date)] 开始百度推送..."[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hUURLS=$(curl -s "${SITE}/sitemap.xm [Kll" | grep -o '<loc>[^<]*</loc>' | sed 's/<[ [K^^>]*>//g')[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hiif [ -z "$URLS" ]; then echo "错误 [K：无法获取 sitemap"; exit 1; fi[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hUURL_COUNT=$(echo "$URLS" | wc -l | [K  tr -d ' ')[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004heecho "[$(date)] 共 ${URL_COUNT} 个 [K  URL，推送中..."[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hRRESULT=$(echo "$URLS" | curl -s -H [K  'Content-Type:text/plain' --data-binary @- [K  "${BAIDU_API}")[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004heecho "[$(date)] 百度返回：${RESULT [K}}"[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hSSCRIPT[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hcchmod +x /var/www/dulaidila-cms/sc [Krripts/baidu_push.sh[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h## 设置每天早上 8 点自动推送（服务[7m [27m器[K时间，约北京时间 16点）[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h((crontab -l 2>/dev/null | grep -v  [Kbbaidu_push; echo '0 8 * * * bash /var/www/d [Kuulaidila-cms/scripts/baidu_push.sh >> /var/ [Kllog/baidu_push.log 2>&1') | crontab -[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004heecho "=== crontab 已设置 ==="[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hccrontab -l | grep baidu[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004h[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004heecho "=== 立刻测试推送 ==="[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hbbash /var/www/dulaidila-cms/script [Kss/baidu_push.sh[?2004l
+[0m[27m[24m[Jheredoc> [K[?2004hEEOF[?2004l
+=== crontab 已设置 ===
+0 8 * * * bash /var/www/dulaidila-cms/scripts/baidu_push.sh >> /var/log/baidu_push.log 2>&1
+=== 立刻测试推送 ===
+[Sun Apr  5 10:37:54 PM CST 2026] 开始百度推送...
+[Sun Apr  5 10:37:55 PM CST 2026] 共 19 个 URL，推送中...
+[Sun Apr  5 10:37:55 PM CST 2026] 百度返回：{"error":400,"message":"over quota"}
+[1m[7m%[27m[1m[0m                                           [0m[27m[24m[Jdulaidila@DulaiMacBook-Pro dulaidila % [K[?2004h[?2004l
+[1m[7m%[27m[1m[0m                                           [0m[27m[24m[Jdulaidila@DulaiMacBook-Pro dulaidila % [K[?2004h
