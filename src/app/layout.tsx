@@ -1,5 +1,6 @@
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -51,6 +52,11 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+  verification: {
+    other: {
+      "baidu-site-verification": "codeva-XVprKz5CDE",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -66,6 +72,7 @@ export default function RootLayout({
           <main className="main-content" style={{ marginTop: '80px', minHeight: 'calc(100vh - 80px)' }}>
             {children}
           </main>
+          <Footer />
         </div>
       </body>
     </html>
