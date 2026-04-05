@@ -69,31 +69,71 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
+  const excerpt =
+    post.excerpt ||
+    post.content.replace(/<[^>]+>/g, "").substring(0, 160).trim();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: excerpt,
+    datePublished: post.createdAt.toISOString(),
+    dateModified: post.updatedAt.toISOString(),
+    author: {
+      "@type": "Person",
+      name: post.author?.name ?? "Tony Jin",
+      url: "https://dulaidila.com/about",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "dulaidila",
+      url: "https://dulaidila.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://dulaidila.com/og-default.png",
+      },
+    },
+    image:
+      post.coverImage ??
+      `https://dulaidila.com/api/og?title=${encodeURIComponent(post.title)}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://dulaidila.com/insights/${slug}`,
+    },
+  };
+
   return (
-    <article className={styles.articleWrapper}>
-      <div className={styles.header}>
-        <Link href="/insights" className={styles.backBtn}>
-          <ArrowLeft size={18} /> Back to Insights
-        </Link>
-        <h1 className={`${styles.title} font-geek`}>{post.title}</h1>
-        <div className={styles.meta}>
-          <span className={styles.author}>{post.author?.name || "Independent Geek"}</span>
-          <span className={styles.divider}>•</span>
-          <time dateTime={post.createdAt.toISOString()}>
-            {new Date(post.createdAt).toLocaleDateString()}
-          </time>
-        </div>
-      </div>
-
-      <div
-        className={styles.contentBody}
-        dangerouslySetInnerHTML={{ __html: post.content }}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <article className={styles.articleWrapper}>
+        <div className={styles.header}>
+          <Link href="/insights" className={styles.backBtn}>
+            <ArrowLeft size={18} /> Back to Insights
+          </Link>
+          <h1 className={`${styles.title} font-geek`}>{post.title}</h1>
+          <div className={styles.meta}>
+            <span className={styles.author}>{post.author?.name || "Independent Geek"}</span>
+            <span className={styles.divider}>•</span>
+            <time dateTime={post.createdAt.toISOString()}>
+              {new Date(post.createdAt).toLocaleDateString()}
+            </time>
+          </div>
+        </div>
 
-      <div className={styles.footer}>
-        <ShareBar title={post.title} />
-        <CommentsSection postId={post.id} />
-      </div>
-    </article>
+        <div
+          className={styles.contentBody}
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+
+        <div className={styles.footer}>
+          <ShareBar title={post.title} />
+          <CommentsSection postId={post.id} />
+        </div>
+      </article>
+    </>
   );
 }

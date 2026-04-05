@@ -17,8 +17,55 @@ export const metadata: Metadata = {
 export default async function Home() {
   const posts = await getPublishedPosts(3);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://dulaidila.com/#website",
+        url: "https://dulaidila.com",
+        name: "dulaidila",
+        description: "Independent Service Design & Delivery Studio",
+        inLanguage: ["zh-CN", "en"],
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: "https://dulaidila.com/insights?q={search_term_string}",
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://dulaidila.com/#organization",
+        name: "dulaidila",
+        url: "https://dulaidila.com",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://dulaidila.com/og-default.png",
+          width: 1200,
+          height: 630,
+        },
+        foundingDate: "2024",
+        description:
+          "Independent Service Design & Delivery Studio founded by Tony Jin.",
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "tony@dulaidila.com",
+          contactType: "customer support",
+        },
+      },
+    ],
+  };
+
   return (
-    <div className={styles.homeWrapper}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles.homeWrapper}>
       {/* Hero Section */}
       <section className={`${styles.hero} container`}>
         <div className={styles.heroContent}>
@@ -138,5 +185,6 @@ export default async function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }
