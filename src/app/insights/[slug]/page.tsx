@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import styles from "./article.module.css";
 import CommentsSection from "@/components/comments/CommentsSection";
+import ShareBar from "@/components/share/ShareBar";
 import { getPostBySlug } from "@/lib/data";
 
 type Props = {
@@ -90,6 +91,7 @@ export default async function ArticlePage({ params }: Props) {
       />
 
       <div className={styles.footer}>
+        <ShareBar title={post.title} />
         <CommentsSection postId={post.id} />
       </div>
     </article>
