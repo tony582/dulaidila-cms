@@ -12,6 +12,11 @@ export default function Footer() {
         textAlign: "center",
       }}
     >
+      {/* Inline style for ICP hover — avoids client component */}
+      <style>{`
+        .footer-icp:hover { color: #fff !important; }
+      `}</style>
+
       <div
         className="container"
         style={{
@@ -62,17 +67,16 @@ export default function Footer() {
             href="https://beian.miit.gov.cn/"
             target="_blank"
             rel="noopener noreferrer"
+            className="footer-icp"
             style={{
-              color: "rgba(255,255,255,0.7)",
+              color: "rgba(255,255,255,0.75)",
               textDecoration: "none",
               fontFamily: "var(--font-jetbrains-mono, monospace)",
               fontSize: "0.75rem",
-              borderBottom: "1px solid rgba(255,255,255,0.2)",
+              borderBottom: "1px solid rgba(255,255,255,0.25)",
               paddingBottom: "1px",
               transition: "color 0.2s",
             }}
-            onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.7)")}
           >
             沪ICP备20003294号-1
           </a>
@@ -81,3 +85,4 @@ export default function Footer() {
     </footer>
   );
 }
+
