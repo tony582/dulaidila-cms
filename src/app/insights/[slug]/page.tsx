@@ -1,19 +1,68 @@
-import { PrismaClient } from "@prisma/client";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import styles from "./article.module.css";
 import CommentsSection from "@/components/comments/CommentsSection";
+import { getPostBySlug } from "@/lib/data";
 
-const prisma = new PrismaClient();
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  
-  const post = await prisma.post.findUnique({
-    where: { slug },
-    include: { author: true },
-  });
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "Article Not Found",
+      description: "This article does not exist.",
+    };
+  }
+
+  const excerpt =
+    post.excerpt ||
+    post.content.replace(/<[^>]+>/g, "").substring(0, 160).trim();
+
+  const ogImage = post.coverImage
+    ? post.coverImage.startsWith("http")
+      ? post.coverImage
+      : `/${post.coverImage}`
+    : `/api/og?title=${encodeURIComponent(post.title)}&author=${encodeURIComponent(post.author?.name ?? "dulaidila")}`;
+
+  return {
+    title: post.title,
+    description: excerpt,
+    openGraph: {
+      type: "article",
+      url: `https://dulaidila.com/insights/${slug}`,
+      title: post.title,
+      description: excerpt,
+      publishedTime: post.createdAt.toISOString(),
+      modifiedTime: post.updatedAt.toISOString(),
+      authors: [post.author?.name ?? "Tony Jin"],
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: excerpt,
+      images: [ogImage],
+    },
+  };
+}
+
+export default async function ArticlePage({ params }: Props) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -35,11 +84,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         </div>
       </div>
 
-      <div 
-        className={styles.contentBody} 
-        dangerouslySetInnerHTML={{ __html: post.content }} 
+      <div
+        className={styles.contentBody}
+        dangerouslySetInnerHTML={{ __html: post.content }}
       />
-      
+
       <div className={styles.footer}>
         <CommentsSection postId={post.id} />
       </div>

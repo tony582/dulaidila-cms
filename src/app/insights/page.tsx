@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PrismaClient } from "@prisma/client";
+
+export const metadata: Metadata = {
+  title: "Insights",
+  description:
+    "Explore Tony Jin's thoughts on Service Design, delivery frameworks, tech, and digital innovation.",
+  openGraph: {
+    url: "https://dulaidila.com/insights",
+    title: "Insights | dulaidila",
+    description:
+      "Explore thoughts on Service Design, delivery frameworks, and digital innovation.",
+  },
+};
 
 const prisma = new PrismaClient();
 

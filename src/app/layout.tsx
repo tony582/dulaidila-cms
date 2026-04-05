@@ -6,9 +6,51 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk" });
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
-export const metadata = {
-  title: "dulaidila | Only the Paranoid Survive",
-  description: "Independent Studio & Tony Jin's Geek Blog",
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://dulaidila.com"),
+  title: {
+    default: "dulaidila | Only the Paranoid Survive",
+    template: "%s | dulaidila",
+  },
+  description:
+    "Independent Service Design & Delivery Studio. Tony Jin's geek blog on design, tech, and digital innovation.",
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    alternateLocale: "en_US",
+    url: "https://dulaidila.com",
+    siteName: "dulaidila",
+    title: "dulaidila | Only the Paranoid Survive",
+    description:
+      "Independent Service Design & Delivery Studio. Tony Jin's geek blog on design, tech, and digital innovation.",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "dulaidila — Independent Studio & Geek Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@dulaidila",
+    creator: "@dulaidila",
+    title: "dulaidila | Only the Paranoid Survive",
+    description:
+      "Independent Service Design & Delivery Studio. Tony Jin's geek blog on design, tech, and digital innovation.",
+    images: ["/og-default.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({

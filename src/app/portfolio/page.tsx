@@ -1,5 +1,17 @@
+import type { Metadata } from "next";
 import { PrismaClient } from "@prisma/client";
 import { Terminal } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "Explore Dulaidila's independent projects, robust CMS builds, and modern digital applications.",
+  openGraph: {
+    url: "https://dulaidila.com/portfolio",
+    title: "Portfolio | dulaidila",
+    description: "Explore independent projects, robust CMS builds, and modern applications.",
+  },
+};
 
 // For static generation or server components, we can query direct
 const prisma = new PrismaClient();

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 48" width="320" height="48">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;display=swap');
+    </style>
+  </defs>
+  
+  <!-- Terminal Icon -->
+  <g transform="translate(0, 4)" stroke="#00f3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Terminal outer rectangle -->
+    <rect x="2" y="2" width="36" height="36" rx="4" ry="4"/>
+    <!-- Greater-than prompt -->
+    <polyline points="10,14 18,20 10,26"/>
+    <!-- Cursor line -->
+    <line x1="22" y1="26" x2="30" y2="26"/>
+  </g>
+  
+  <!-- "Dulaidila" text -->
+  <text x="52" y="33" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="28" fill="#f8f8f8" letter-spacing="-0.5">Dulaidila</text>
+  
+  <!-- Dot "." in pink -->
+  <text x="214" y="33" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="28" fill="#ff00ff">.</text>
+</svg>
