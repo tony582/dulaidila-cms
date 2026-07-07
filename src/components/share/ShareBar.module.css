@@ -3,20 +3,21 @@
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
+  padding: 18px 22px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   margin-bottom: 48px;
 }
 
 .label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted, rgba(255,255,255,0.4));
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--ink-faint);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-right: 4px;
+  letter-spacing: 0.22em;
+  margin-right: 6px;
   white-space: nowrap;
 }
 
@@ -25,12 +26,12 @@
   align-items: center;
   gap: 7px;
   padding: 9px 16px;
-  border-radius: 10px;
-  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
   font-weight: 500;
-  color: var(--text-secondary, rgba(255,255,255,0.65));
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--line);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.18s ease;
@@ -40,23 +41,23 @@
 }
 
 .btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.18);
-  color: #fff;
+  background: var(--paper);
+  border-color: var(--line-strong);
+  color: var(--ink);
   transform: translateY(-1px);
 }
 
 .btn.active,
 .btn:focus-visible {
-  border-color: rgba(0, 212, 255, 0.4);
-  color: var(--accent-cyan, #00d4ff);
+  border-color: var(--pine);
+  color: var(--pine);
   outline: none;
 }
 
 .btn.copied {
-  background: rgba(0, 212, 255, 0.12);
-  border-color: rgba(0, 212, 255, 0.4);
-  color: var(--accent-cyan, #00d4ff);
+  background: rgba(31, 77, 63, 0.08);
+  border-color: var(--pine);
+  color: var(--pine);
 }
 
 /* QR popup */
@@ -70,19 +71,25 @@
   left: 50%;
   transform: translateX(-50%);
   width: 200px;
-  background: #141420;
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 16px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
   padding: 16px;
   text-align: center;
   z-index: 100;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 212, 255, 0.05);
+  box-shadow: 0 24px 48px -20px rgba(28, 27, 23, 0.3);
   animation: popIn 0.18s ease;
 }
 
 @keyframes popIn {
-  from { opacity: 0; transform: translateX(-50%) scale(0.9) translateY(6px); }
-  to   { opacity: 1; transform: translateX(-50%) scale(1)   translateY(0);  }
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1) translateY(0);
+  }
 }
 
 .qrArrow {
@@ -92,20 +99,21 @@
   transform: translateX(-50%) rotate(45deg);
   width: 12px;
   height: 12px;
-  background: #141420;
-  border-right: 1px solid rgba(0, 212, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  background: var(--paper-raised);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .qrHint {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--ink-faint);
   margin-bottom: 12px;
   margin-top: 0;
 }
 
 .qrImage {
-  border-radius: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
   display: block;
   margin: 0 auto;
   width: 160px;
@@ -114,11 +122,11 @@
 
 .qrUrl {
   font-size: 0.65rem;
-  color: rgba(0, 212, 255, 0.5);
+  color: var(--ink-faint);
   margin-top: 10px;
   margin-bottom: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-family: var(--font-jetbrains-mono, monospace);
+  font-family: var(--font-mono);
 }

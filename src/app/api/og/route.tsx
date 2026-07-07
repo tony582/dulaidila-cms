@@ -6,6 +6,14 @@ export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+const PAPER = "#f6f4ee";
+const INK = "#1c1b17";
+const INK_SOFT = "#55534a";
+const INK_FAINT = "#8c897c";
+const PINE = "#1f4d3f";
+const BRONZE = "#9a7b4f";
+const LINE = "rgba(28,27,23,0.18)";
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") ?? "dulaidila";
@@ -19,58 +27,25 @@ export async function GET(request: NextRequest) {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "#0a0a0f",
+          background: PAPER,
           position: "relative",
           overflow: "hidden",
           fontFamily: "sans-serif",
         }}
       >
-        {/* Background gradient blobs */}
-        <div
-          style={{
-            position: "absolute",
-            top: -100,
-            left: -100,
-            width: 600,
-            height: 600,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(0,212,255,0.15) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: -80,
-            right: -80,
-            width: 500,
-            height: 500,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-
-        {/* Grid lines background */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        {/* Border */}
+        {/* Hairline frame */}
         <div
           style={{
             position: "absolute",
             inset: 28,
-            border: "1px solid rgba(255,255,255,0.08)",
-            borderRadius: 20,
+            border: `1px solid ${LINE}`,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 36,
+            border: `1px solid rgba(28,27,23,0.08)`,
           }}
         />
 
@@ -82,43 +57,48 @@ export async function GET(request: NextRequest) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "60px 72px",
+            padding: "76px 88px",
           }}
         >
-          {/* Top: site brand */}
+          {/* Top: masthead */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 12,
+              justifyContent: "space-between",
             }}
           >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background:
-                  "linear-gradient(135deg, #00d4ff, #8b5cf6)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 16,
-                fontWeight: 700,
-                color: "#fff",
-              }}
-            >
-              D
+            <div style={{ display: "flex", alignItems: "baseline", gap: 14 }}>
+              <span
+                style={{
+                  color: INK,
+                  fontSize: 30,
+                  fontWeight: 700,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Dulaidila
+              </span>
+              <span
+                style={{
+                  color: INK_FAINT,
+                  fontSize: 15,
+                  letterSpacing: "0.35em",
+                }}
+              >
+                都来滴啦
+              </span>
             </div>
             <span
               style={{
-                color: "rgba(255,255,255,0.5)",
-                fontSize: 22,
-                fontWeight: 500,
-                letterSpacing: "0.05em",
+                color: PINE,
+                fontSize: 15,
+                fontWeight: 600,
+                textTransform: "uppercase",
+                letterSpacing: "0.28em",
               }}
             >
-              dulaidila.com
+              The Journal
             </span>
           </div>
 
@@ -127,54 +107,40 @@ export async function GET(request: NextRequest) {
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: 16,
+              gap: 22,
               flex: 1,
               justifyContent: "center",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                marginBottom: 8,
-              }}
-            >
-              <div
-                style={{
-                  width: 32,
-                  height: 3,
-                  background: "linear-gradient(90deg, #00d4ff, #8b5cf6)",
-                  borderRadius: 2,
-                }}
-              />
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ width: 40, height: 2, background: PINE }} />
               <span
                 style={{
-                  color: "#00d4ff",
+                  color: INK_FAINT,
                   fontSize: 16,
                   fontWeight: 600,
                   textTransform: "uppercase",
-                  letterSpacing: "0.12em",
+                  letterSpacing: "0.24em",
                 }}
               >
-                Insights
+                Insights · 观点与洞察
               </span>
             </div>
             <div
               style={{
-                fontSize: title.length > 40 ? 52 : 64,
-                fontWeight: 800,
-                color: "#ffffff",
-                lineHeight: 1.15,
-                letterSpacing: "-0.02em",
-                maxWidth: 900,
+                fontSize: title.length > 40 ? 50 : 62,
+                fontWeight: 700,
+                color: INK,
+                lineHeight: 1.2,
+                letterSpacing: "-0.01em",
+                maxWidth: 940,
               }}
             >
               {title}
             </div>
           </div>
 
-          {/* Bottom: author + tag */}
+          {/* Bottom: author + motto */}
           <div
             style={{
               display: "flex",
@@ -182,54 +148,38 @@ export async function GET(request: NextRequest) {
               justifyContent: "space-between",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-              }}
-            >
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div
                 style={{
-                  width: 44,
-                  height: 44,
+                  width: 46,
+                  height: 46,
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, #00d4ff22, #8b5cf622)",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  border: `1.5px solid ${PINE}`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: 18,
+                  fontSize: 19,
                   fontWeight: 700,
-                  color: "#00d4ff",
+                  color: PINE,
                 }}
               >
                 {author.charAt(0).toUpperCase()}
               </div>
-              <span
-                style={{
-                  color: "rgba(255,255,255,0.65)",
-                  fontSize: 20,
-                  fontWeight: 500,
-                }}
-              >
+              <span style={{ color: INK_SOFT, fontSize: 20, fontWeight: 500 }}>
                 {author}
               </span>
             </div>
 
-            <div
+            <span
               style={{
-                padding: "10px 20px",
-                borderRadius: 999,
-                border: "1px solid rgba(255,255,255,0.12)",
-                background: "rgba(255,255,255,0.05)",
-                color: "rgba(255,255,255,0.5)",
-                fontSize: 16,
-                letterSpacing: "0.06em",
+                color: BRONZE,
+                fontSize: 17,
+                letterSpacing: "0.08em",
+                fontStyle: "italic",
               }}
             >
-              Only the Paranoid Survive
-            </div>
+              “Only the Paranoid Survive.”
+            </span>
           </div>
         </div>
       </div>

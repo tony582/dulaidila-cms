@@ -10,159 +10,81 @@ export default function NotFound() {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "calc(100vh - var(--nav-h))",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "24px",
+        padding: "48px 24px",
         textAlign: "center",
-        position: "relative",
-        overflow: "hidden",
       }}
     >
-      {/* Background orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: "20%",
-          left: "20%",
-          width: "400px",
-          height: "400px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20%",
-          right: "20%",
-          width: "350px",
-          height: "350px",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%)",
-          filter: "blur(60px)",
-          pointerEvents: "none",
-        }}
-      />
+      <p className="eyebrow" style={{ marginBottom: "28px" }}>
+        Error · 页面不存在
+      </p>
 
-      {/* Glitch 404 */}
       <div
         style={{
-          fontSize: "clamp(6rem, 20vw, 12rem)",
-          fontWeight: 900,
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(6rem, 18vw, 11rem)",
+          fontWeight: 300,
           lineHeight: 1,
-          fontFamily: "var(--font-space-grotesk), sans-serif",
-          background:
-            "linear-gradient(135deg, var(--accent-cyan, #00d4ff), var(--accent-purple, #8b5cf6))",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          letterSpacing: "-0.04em",
-          marginBottom: "0.5rem",
+          letterSpacing: "-0.03em",
+          color: "var(--ink)",
           userSelect: "none",
         }}
       >
-        404
+        4<span style={{ color: "var(--pine)", fontStyle: "italic" }}>0</span>4
       </div>
 
-      <div
-        className="glass-card"
+      <h1
         style={{
-          maxWidth: "480px",
-          width: "100%",
-          padding: "40px 32px",
-          borderRadius: "20px",
-          marginTop: "8px",
+          fontFamily: "var(--font-display)",
+          fontSize: "1.5rem",
+          fontWeight: 550,
+          margin: "28px 0 10px",
         }}
       >
-        <h1
-          className="font-geek"
-          style={{
-            fontSize: "1.6rem",
-            marginBottom: "12px",
-            color: "var(--text-primary)",
-          }}
-        >
-          Page Not Found
-        </h1>
-        <p
-          style={{
-            color: "var(--text-secondary)",
-            lineHeight: 1.7,
-            marginBottom: "32px",
-            fontSize: "0.95rem",
-          }}
-        >
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-          Let&apos;s get you back on track.
-        </p>
-
-        <div
-          style={{
-            display: "flex",
-            gap: "12px",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <Link
-            href="/"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "12px 24px",
-              background:
-                "linear-gradient(135deg, var(--accent-cyan, #00d4ff), var(--accent-purple, #8b5cf6))",
-              color: "#fff",
-              borderRadius: "12px",
-              fontWeight: 600,
-              textDecoration: "none",
-              fontSize: "0.9rem",
-              transition: "opacity 0.2s",
-            }}
-          >
-            ← Back Home
-          </Link>
-          <Link
-            href="/insights"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "12px 24px",
-              border: "1px solid rgba(255,255,255,0.12)",
-              color: "var(--text-primary)",
-              borderRadius: "12px",
-              fontWeight: 500,
-              textDecoration: "none",
-              fontSize: "0.9rem",
-              background: "rgba(255,255,255,0.04)",
-              transition: "border-color 0.2s",
-            }}
-          >
-            Browse Insights
-          </Link>
-        </div>
-      </div>
-
-      {/* URL hint */}
+        This page is not in the archive.
+      </h1>
       <p
         style={{
-          marginTop: "32px",
-          fontSize: "0.78rem",
-          color: "var(--text-muted)",
-          fontFamily: "var(--font-jetbrains-mono), monospace",
-          opacity: 0.6,
+          color: "var(--ink-soft)",
+          lineHeight: 1.7,
+          maxWidth: "44ch",
+          marginBottom: "40px",
+          fontSize: "0.95rem",
         }}
       >
-        dulaidila.com → 404
+        您访问的页面不存在，或已被移动。Let&apos;s get you back on the record.
+      </p>
+
+      <div
+        style={{
+          display: "flex",
+          gap: "14px",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
+        <Link href="/" className="btn btn-ink">
+          Back Home <span className="btn-arrow">→</span>
+        </Link>
+        <Link href="/insights" className="btn btn-line">
+          The Journal
+        </Link>
+      </div>
+
+      <p
+        style={{
+          marginTop: "48px",
+          fontSize: "0.7rem",
+          letterSpacing: "0.2em",
+          color: "var(--ink-faint)",
+          fontFamily: "var(--font-mono)",
+        }}
+      >
+        DULAIDILA.COM — 404
       </p>
     </div>
   );

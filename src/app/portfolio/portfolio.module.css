@@ -1,219 +1,201 @@
-.portfolioContainer {
-  padding: 100px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+.page {
+  padding-top: 96px;
+  padding-bottom: 130px;
 }
 
-.header {
-  text-align: center;
+/* ============ Masthead ============ */
+
+.head {
+  max-width: 860px;
   margin-bottom: 80px;
 }
 
-.header h1 {
-  font-size: 3.5rem;
-  margin-bottom: 24px;
+.title {
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 560;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 30px 0 26px;
 }
 
-.header p {
-  font-size: 1.2rem;
-  max-width: 600px;
-  margin: 0 auto;
+.title em {
+  font-style: italic;
+  font-weight: 480;
+  color: var(--pine);
 }
 
-.bentoGrid {
+.intro {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+/* ============ Case index ============ */
+
+.caseGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
-  grid-auto-rows: 400px;
-  grid-auto-flow: dense;
+  grid-template-columns: 1fr;
+  gap: 56px 40px;
 }
 
-@media (min-width: 1024px) {
-  .bentoGrid {
-    grid-template-columns: repeat(3, 1fr);
+@media (min-width: 820px) {
+  .caseGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.bentoCard {
-  position: relative;
-  border-radius: 24px;
+.caseCard {
+  display: block;
+  color: inherit;
+}
+
+.caseCard:hover {
+  color: inherit;
+}
+
+.caseMedia {
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  cursor: pointer;
-  isolation: isolate;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper-dim);
+  margin-bottom: 22px;
 }
 
-/* Default mobile spans */
-.bentoCard {
-  grid-column: span 1;
-  grid-row: span 1;
-}
-
-/* Specific PC Layouts to avoid empty gaps */
-@media (min-width: 1024px) {
-  /* Pattern: 
-     Item 1: Big Hero (2x2)
-     Item 2 & 3: Side squares (1x1)
-     Item 4: Full width banner (3x1)
-  */
-  
-  .bentoCard:nth-child(4n+1) {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-  
-  .bentoCard:nth-child(4n+2),
-  .bentoCard:nth-child(4n+3) {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-  
-  .bentoCard:nth-child(4n+4) {
-    grid-column: span 3;
-    grid-row: span 1;
-  }
-}
-
-
-.bentoImageContainer {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  overflow: hidden;
-}
-
-.bentoImage {
+.caseImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  filter: brightness(0.7) contrast(1.1);
+  filter: grayscale(0.85) contrast(0.96);
+  transform: scale(1.01);
+  transition: filter 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.bentoCard:hover .bentoImage {
-  transform: scale(1.05);
-  filter: brightness(0.85);
+.caseCard:hover .caseImage {
+  filter: grayscale(0);
+  transform: scale(1.045);
 }
 
-/* Glassmorphism gradient layer under texts */
-.bentoOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 15, 0) 0%, rgba(10, 10, 15, 0.4) 40%, rgba(10, 10, 15, 0.95) 100%);
-  z-index: -1;
-  transition: opacity 0.3s ease;
-}
-
-.bentoCard:hover .bentoOverlay {
-  opacity: 0.9;
-}
-
-.bentoContent {
-  padding: 32px;
-  transform: translateY(0);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: 10;
-}
-
-@media (max-width: 768px) {
-  .bentoContent {
-    padding: 24px;
-  }
-}
-
-.bentoCard:hover .bentoContent {
-  transform: translateY(-8px);
-}
-
-.metaInfo {
+.casePlaceholder {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--ink-faint);
+}
+
+.caseMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.caseIndex {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  color: var(--pine);
+}
+
+.caseClient {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.caseRole {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+
+.caseTitle {
+  font-size: 1.55rem;
+  font-weight: 560;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  transition: color 0.25s ease;
+}
+
+.caseCard:hover .caseTitle {
+  color: var(--pine);
+}
+
+.caseDesc {
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 52ch;
+}
+
+.caseAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 3px;
+}
+
+.caseCard:hover .caseAction {
+  color: var(--pine);
+  border-color: var(--pine);
+}
+
+/* ============ Loading / empty states ============ */
+
+.stateBox {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper-raised);
+  padding: 90px 40px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+}
+
+.stateSerif {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 520;
+  letter-spacing: 0;
+  color: var(--ink);
   margin-bottom: 12px;
 }
 
-.clientBadge {
-  background: rgba(0, 243, 255, 0.15);
-  color: var(--accent-cyan);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba(0, 243, 255, 0.3);
+.stateSpinner {
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  border-top-color: var(--pine);
+  animation: stateSpin 0.9s linear infinite;
 }
 
-.roleText {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.85rem;
-  font-weight: 500;
-}
-
-.title {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  color: white;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-  line-height: 1.2;
-}
-
-@media (min-width: 1024px) {
-  .bentoCard:nth-child(4n+1) .title,
-  .bentoCard:nth-child(4n+4) .title {
-    font-size: 2.8rem;
+@keyframes stateSpin {
+  to {
+    transform: rotate(360deg);
   }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 2rem;
-  }
-}
-
-.description {
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.6;
-  font-size: 0.95rem;
-  margin-bottom: 24px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-@media (min-width: 1024px) {
-  .bentoCard:nth-child(4n+1) .description,
-  .bentoCard:nth-child(4n+4) .description {
-    font-size: 1.1rem;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-  }
-}
-
-.actionRow {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent-cyan);
-  font-weight: 600;
-  font-size: 0.95rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
-}
-
-.bentoCard:hover .actionRow {
-  opacity: 1;
-}
-
-.arrowIcon {
-  transition: transform 0.3s ease;
-}
-
-.bentoCard:hover .arrowIcon {
-  transform: translateX(4px);
 }

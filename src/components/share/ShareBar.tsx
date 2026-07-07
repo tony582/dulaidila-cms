@@ -88,7 +88,7 @@ export default function ShareBar({ title, url }: ShareBarProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=00d4ff&bgcolor=0a0a0f&data=${encoded}`;
+  const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=1c1b17&bgcolor=fcfbf7&data=${encoded}`;
 
   return (
     <div className={styles.shareBar}>

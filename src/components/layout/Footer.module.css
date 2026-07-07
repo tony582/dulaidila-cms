@@ -1,0 +1,116 @@
+.footer {
+  margin-top: 0;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  padding-top: 72px;
+  padding-bottom: 56px;
+}
+
+@media (min-width: 820px) {
+  .inner {
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+.brand {
+  max-width: 420px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--paper-on-dark);
+}
+
+.wordmarkZh {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  color: rgba(239, 237, 229, 0.55);
+  margin-top: 10px;
+}
+
+.motto {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(239, 237, 229, 0.72);
+  margin-top: 24px;
+  line-height: 1.5;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.colTitle {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(239, 237, 229, 0.45);
+  margin-bottom: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line-on-dark);
+}
+
+.colLink {
+  font-size: 0.9rem;
+  color: rgba(239, 237, 229, 0.78);
+  width: fit-content;
+}
+
+.colText {
+  font-size: 0.9rem;
+  color: rgba(239, 237, 229, 0.55);
+}
+
+.colCta {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  color: var(--paper-on-dark);
+  border-bottom: 1px solid rgba(239, 237, 229, 0.4);
+  padding-bottom: 3px;
+  width: fit-content;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding-top: 24px;
+  padding-bottom: 28px;
+  border-top: 1px solid var(--line-on-dark);
+  font-size: 0.76rem;
+  color: rgba(239, 237, 229, 0.45);
+}
+
+.legalMotto {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(239, 237, 229, 0.35);
+}
+
+.icp {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(239, 237, 229, 0.6);
+  border-bottom: 1px solid rgba(239, 237, 229, 0.25);
+  padding-bottom: 1px;
+}
+
+.icp:hover {
+  color: var(--paper-on-dark);
+}

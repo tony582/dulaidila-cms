@@ -1,130 +1,159 @@
-.header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  margin-bottom: 60px;
+.page {
+  padding-top: 96px;
+  padding-bottom: 130px;
 }
 
-.header h1 {
-  font-size: 3rem;
-  margin-bottom: 8px;
+/* ============ Masthead ============ */
+
+.head {
+  max-width: 860px;
+  margin-bottom: 96px;
 }
 
-.header p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+.title {
+  font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+  font-weight: 560;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 30px 0 34px;
 }
 
-.grid {
+.title em {
+  font-style: italic;
+  font-weight: 480;
+  color: var(--pine);
+}
+
+.introZh {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+
+.introEn {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+/* ============ Ledger ============ */
+
+.ledger {
+  border-top: 1px solid var(--line-strong);
+}
+
+.entry {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
+  grid-template-columns: 110px 1fr;
+  gap: 20px 32px;
+  padding: 56px 8px;
+  border-bottom: 1px solid var(--line);
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 900px) {
+  .entry {
+    grid-template-columns: 110px 1fr 1.15fr;
+    gap: 48px;
   }
 }
 
-.card {
-  padding: 40px;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(20, 20, 25, 0.4);
-  border-radius: 24px;
+.entryIndex {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink-faint);
+}
+
+.entry:hover .entryIndex {
+  color: var(--pine);
+}
+
+.entryTitles {
+  min-width: 0;
+}
+
+.entryZh {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 560;
+  margin-bottom: 12px;
+}
+
+.entryEn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.entryBody {
+  grid-column: 2;
+}
+
+@media (min-width: 900px) {
+  .entryBody {
+    grid-column: auto;
+  }
+}
+
+.entryDescEn {
+  font-size: 0.98rem;
+  color: var(--ink);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.entryDescZh {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  margin-bottom: 26px;
+}
+
+.scope {
+  list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.spotlight {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.scope li {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 7px 12px;
+  background: var(--paper-raised);
 }
 
-.card:hover .spotlight {
-  opacity: 1;
-}
+/* ============ Closing ============ */
 
-.cardContent {
-  position: relative;
-  z-index: 2;
-  flex: 1;
+.closing {
   display: flex;
-  flex-direction: column;
-}
-
-.iconWrapper {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
-  background: rgba(138, 43, 226, 0.08);
-  color: var(--accent-cyan);
-  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 24px;
-  border: 1px solid rgba(0, 243, 255, 0.15);
-  box-shadow: 0 0 20px rgba(0, 243, 255, 0.05);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 72px;
+  padding: 36px 8px 0;
 }
 
-.card:hover .iconWrapper {
-  border-color: rgba(0, 243, 255, 0.4);
-  box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+.closingText {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 520;
 }
 
-.titles {
-  margin-bottom: 16px;
-}
-
-.zhTitle {
-  font-size: 0.95rem;
-  color: var(--accent-cyan);
-  font-weight: 500;
-  opacity: 0.8;
-  margin: 0 0 4px 0;
-  letter-spacing: 1px;
-}
-
-.card h3 {
-  font-size: 1.6rem;
-  margin: 0;
-  color: #fff;
-  line-height: 1.2;
-}
-
-.descContainer {
-  margin-top: 8px;
-}
-
-.enDesc {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin: 0 0 12px 0;
-  font-size: 0.95rem;
-}
-
-.zhDesc {
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.6;
+.closingText span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-body);
   font-size: 0.9rem;
-  margin: 0;
-}
-
-.bottomHighlight {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-cyan), #8a2be2);
-  z-index: 3;
+  color: var(--ink-faint);
+  letter-spacing: 0.08em;
 }

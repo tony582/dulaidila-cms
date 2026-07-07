@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PrismaClient } from "@prisma/client";
+import styles from "./insights.module.css";
+import { getPublishedPosts } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Insights",
@@ -14,46 +15,68 @@ export const metadata: Metadata = {
   },
 };
 
-const prisma = new PrismaClient();
+function formatDate(d: Date | string) {
+  const date = new Date(d);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${date.getFullYear()}.${pad(date.getMonth() + 1)}.${pad(date.getDate())}`;
+}
 
 export default async function InsightsPage() {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    orderBy: { createdAt: "desc" },
-    include: { author: true },
-  });
+  const posts = await getPublishedPosts();
 
   return (
-    <div className="container" style={{ padding: "100px 24px" }}>
-      <div style={{ textAlign: "center", marginBottom: "60px" }}>
-        <h1 className="font-geek" style={{ fontSize: "3rem", marginBottom: "16px" }}>Latest <span className="text-gradient">Insights</span></h1>
-        <p className="text-secondary">Explore thoughts on Service Design, Delivery frameworks, and digital innovation.</p>
-      </div>
+    <div className={`container ${styles.page}`}>
+      {/* Masthead */}
+      <header className={styles.head}>
+        <p className="eyebrow">The Journal · 观点与洞察</p>
+        <h1 className={styles.title}>
+          Notes from <em>the desk.</em>
+        </h1>
+        <p className={styles.intro}>
+          Service design, delivery frameworks, and the craft of shipping —
+          关于服务设计、交付方法与技术实践的长期思考。
+        </p>
+      </header>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "32px", maxWidth: "1000px", margin: "0 auto" }}>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <Link key={post.id} href={`/insights/${post.slug}`} className="glass-card" style={{ display: "block", padding: "24px", color: "inherit", textDecoration: "none" }}>
-              <div style={{ marginBottom: "12px", fontSize: "0.85rem", color: "var(--accent-purple)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px" }}>
-                Tech & Thoughts
+      {/* Issue list */}
+      {posts.length > 0 ? (
+        <div className={styles.list}>
+          {posts.map((post, i) => (
+            <Link
+              key={post.id}
+              href={`/insights/${post.slug}`}
+              className={styles.row}
+            >
+              <div className={styles.rowMeta}>
+                <span className={styles.rowNo}>
+                  No. {String(posts.length - i).padStart(2, "0")}
+                </span>
+                <span className={styles.rowDate}>{formatDate(post.createdAt)}</span>
               </div>
-              <h3 className="font-geek" style={{ fontSize: "1.4rem", marginBottom: "12px", color: "var(--text-primary)", lineHeight: 1.4 }}>{post.title}</h3>
-              <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, marginBottom: "20px" }}>
-                {/* Extract simple excerpt from HTML content or use first few chars */}
-                {post.content.replace(/<[^>]+>/g, '').substring(0, 100)}...
-              </p>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", color: "var(--text-muted)", borderTop: "1px solid var(--border-subtle)", paddingTop: "12px" }}>
-                <span>{post.author.name}</span>
-                <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+
+              <div className={styles.rowBody}>
+                <h2 className={styles.rowTitle}>{post.title}</h2>
+                <p className={styles.rowExcerpt}>
+                  {(post.excerpt || post.content.replace(/<[^>]+>/g, ""))
+                    .substring(0, 120)
+                    .trim()}
+                  …
+                </p>
+                <span className={styles.rowAuthor}>{post.author.name}</span>
               </div>
+
+              <span className={styles.rowArrow} aria-hidden>
+                →
+              </span>
             </Link>
-          ))
-        ) : (
-          <div className="glass" style={{ gridColumn: "1 / -1", padding: "40px", textAlign: "center", borderRadius: "var(--radius-md)", color: "var(--text-muted)" }}>
-            <p>No insights published yet. Check back soon for new content!</p>
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.empty}>
+          <p className={styles.emptySerif}>The first issue is at the press.</p>
+          <p>暂无已发布的文章，敬请期待。</p>
+        </div>
+      )}
     </div>
   );
 }

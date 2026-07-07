@@ -112,14 +112,19 @@ export default async function ArticlePage({ params }: Props) {
       <article className={styles.articleWrapper}>
         <div className={styles.header}>
           <Link href="/insights" className={styles.backBtn}>
-            <ArrowLeft size={18} /> Back to Insights
+            <ArrowLeft size={16} /> The Journal · 返回
           </Link>
-          <h1 className={`${styles.title} font-geek`}>{post.title}</h1>
+          <p className="eyebrow">观点与洞察</p>
+          <h1 className={styles.title}>{post.title}</h1>
           <div className={styles.meta}>
-            <span className={styles.author}>{post.author?.name || "Independent Geek"}</span>
-            <span className={styles.divider}>•</span>
+            <span className={styles.author}>
+              {post.author?.name || "Tony Jin"}
+            </span>
+            <span className={styles.divider} aria-hidden>
+              —
+            </span>
             <time dateTime={post.createdAt.toISOString()}>
-              {new Date(post.createdAt).toLocaleDateString()}
+              {post.createdAt.toISOString().slice(0, 10).replaceAll("-", ".")}
             </time>
           </div>
         </div>
