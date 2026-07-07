@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Terminal, Code2, Globe, Mail } from "lucide-react";
 import styles from "./about.module.css";
 

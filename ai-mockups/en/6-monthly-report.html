@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Monthly Insight Report</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.report-section { margin-bottom:20px; }
+.report-section h3 { font-size:14px; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.insight-card { background:var(--bg-input); padding:12px 14px; border-radius:8px; margin-bottom:8px; border-left:3px solid; }
+.trend-item { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.trend-item:last-child { border:none; }
+.report-header { background:linear-gradient(135deg, #0a1628, #1a2a4a); padding:24px; border-radius:12px; margin-bottom:20px; }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">AI</div>
+    <div class="nav-item">📊</div>
+    <div class="nav-item">🔍</div>
+    <div class="nav-item">📚</div>
+    <div class="nav-item">💬</div>
+    <div class="nav-item">⚙️</div>
+    <div class="nav-item active">📋</div>
+  </nav>
+  <div class="main-content">
+    <div class="topbar">
+      <div class="topbar-title">AI Monthly Insight Report <span>Auto-Generated Analytics</span></div>
+      <div class="topbar-right">
+        <button class="btn btn-outline">📥 Export PDF</button>
+        <button class="btn btn-primary">📧 Send Report</button>
+        <div class="topbar-avatar">ZX</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="report-header">
+        <div style="font-size:20px;font-weight:700;margin-bottom:4px">L2 Operations Monthly Insight Report</div>
+        <div style="font-size:13px;color:var(--text-muted)">March 2026 · AI Auto-Generated · Reviewed by Ops Manager before distribution</div>
+        <div style="display:flex;gap:30px;margin-top:16px">
+          <div><div style="font-size:10px;color:var(--text-muted)">Total Incidents</div><div style="font-size:22px;font-weight:700">156</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">SLA Compliance</div><div style="font-size:22px;font-weight:700;color:var(--accent-green)">99.4%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">Avg. MTTR</div><div style="font-size:22px;font-weight:700">36 min</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">L2 FCR</div><div style="font-size:22px;font-weight:700;color:var(--accent-green)">88%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">Change Success</div><div style="font-size:22px;font-weight:700;color:var(--accent-green)">99.5%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">AI Contribution</div><div style="font-size:22px;font-weight:700;color:var(--accent-purple)">42%</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="report-section">
+            <h3>🔥 AI-Identified Top 5 Recurring Issues</h3>
+            <div class="insight-card" style="border-color:var(--accent-red)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">1. Auth Service Session-Related Issues</strong><span class="tag tag-red">18 occurrences</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI suggests: Systemic risk in session management architecture. Recommend L3 evaluation of Redis Cluster HA upgrade.</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-orange)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">2. CDN Edge Node Latency</strong><span class="tag tag-orange">14 occurrences</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI suggests: Concentrated in East China nodes. Recommend adding node redundancy or switching providers.</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-orange)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">3. HarmonyOS Crash Rate Elevated</strong><span class="tag tag-orange">11 occurrences</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI suggests: Primarily compatibility issues after system updates. Recommend expanding version regression test cases.</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-blue)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">4. Push Notification Delay / Loss</strong><span class="tag tag-blue">9 occurrences</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI suggests: Message queue nearing capacity threshold during peaks. Recommend capacity expansion evaluation.</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-blue)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">5. Third-Party Payment Channel Timeout</strong><span class="tag tag-blue">7 occurrences</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI suggests: Impacted by 3rd-party service stability. Recommend adding multi-channel failover switching.</div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <h3>📈 Monthly KPI Trends</h3>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">MTTR</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:30%;background:var(--accent-green)"></div></div></span><span style="width:80px;text-align:right">36min</span><span class="trend up" style="width:60px;text-align:right">↓ 15%</span></div>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">MTT Respond</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:20%;background:var(--accent-green)"></div></div></span><span style="width:80px;text-align:right">7min</span><span class="trend up" style="width:60px;text-align:right">↓ 22%</span></div>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">L2 FCR</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:88%;background:var(--accent-green)"></div></div></span><span style="width:80px;text-align:right">88%</span><span class="trend up" style="width:60px;text-align:right">↑ 3%</span></div>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">KB Hit Rate</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:65%;background:var(--accent-blue)"></div></div></span><span style="width:80px;text-align:right">65%</span><span class="trend up" style="width:60px;text-align:right">↑ 5%</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="report-section">
+            <h3>🧠 AI Insights & Recommendations</h3>
+            <div class="card" style="margin-bottom:12px">
+              <div class="card-body">
+                <div style="font-size:12px;font-weight:600;color:var(--accent-purple);margin-bottom:6px">📊 Efficiency Insights</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
+                  • MTTR decreased 15% MoM, primarily driven by improved AI solution recommendation hit rate (58% → 65%)<br>
+                  • P2/P3 incidents L2-resolved rate reached 95%, demonstrating strong KB effectiveness<br>
+                  • Night shift MTTR comparable to daytime (39min vs 35min), AI copilot proving its value
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:12px">
+              <div class="card-body">
+                <div style="font-size:12px;font-weight:600;color:var(--accent-orange);margin-bottom:6px">⚠ Risk Warnings</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
+                  • MySQL primary connection pool utilization growing 3% monthly, projected to hit 85% warning threshold by May<br>
+                  • Post-HarmonyOS 6.0 release: historically, incident volume increases 40% within 2 weeks of major updates<br>
+                  • Major version release planned for April — recommend pre-staging Layer 2 expert availability
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size:12px;font-weight:600;color:var(--accent-green);margin-bottom:6px">✅ Improvement Recommendations</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
+                  • Escalate Top-1 recurring issue (Session management) to Problem record, drive L3 architecture optimization<br>
+                  • For HarmonyOS compatibility: recommend adding 15 Runbooks covering common anomaly scenarios<br>
+                  • Recommend extending AI alert noise reduction rules to push notification module next month<br>
+                  • KB added 38 entries, but 12 legacy entries flagged for update — recommend cleanup this week
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <h3>📅 Next Month Focus Areas</h3>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px">
+              <div style="font-size:12px;color:var(--text-secondary);line-height:2">
+                <span class="status-dot orange"></span> 4/15 user-auth v3.6.0 major release (high-risk change)<br>
+                <span class="status-dot blue"></span> 4/18–20 Spring marketing campaign (expected traffic +60%)<br>
+                <span class="status-dot blue"></span> 4/22 HarmonyOS 6.0 compatibility validation window<br>
+                <span class="status-dot green"></span> 4/30 Monthly retrospective meeting
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+.messagesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.messageCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.messageCard.unread {
+  border-left: 4px solid var(--accent-cyan);
+  background: rgba(0, 243, 255, 0.03);
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.messageHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.email {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.email:hover {
+  text-decoration: underline;
+  color: var(--accent-cyan);
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.metaInfo {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.body {
+  color: #fff;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-bottom: 24px;
+  background: rgba(0,0,0,0.2);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,55 +1,92 @@
-import type { Metadata } from "next";
-import { PrismaClient } from "@prisma/client";
-import { Terminal } from "lucide-react";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Portfolio",
-  description:
-    "Explore Dulaidila's independent projects, robust CMS builds, and modern digital applications.",
-  openGraph: {
-    url: "https://dulaidila.com/portfolio",
-    title: "Portfolio | dulaidila",
-    description: "Explore independent projects, robust CMS builds, and modern applications.",
-  },
-};
+import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { ArrowRight, Terminal } from "lucide-react";
+import styles from "./portfolio.module.css";
 
-// For static generation or server components, we can query direct
-const prisma = new PrismaClient();
+export default function PortfolioPage() {
+  const [portfolios, setPortfolios] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export default async function PortfolioPage() {
-  const portfolios = await prisma.portfolio.findMany({
-    orderBy: { createdAt: "desc" }
-  });
+  // Note: we fetch client side so the page can animate nicely in,
+  // or we could use server components but 'use client' is needed for framer-motion.
+  useEffect(() => {
+    // We create a quick API fetch for portfolio
+    fetch("/api/portfolio")
+      .then(res => res.json())
+      .then(data => setPortfolios(data))
+      .catch(e => console.error(e))
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
-    <div className="container" style={{ padding: "100px 24px" }}>
-      <div style={{ textAlign: "center", marginBottom: "60px" }}>
-        <h1 className="font-geek" style={{ fontSize: "3rem", marginBottom: "16px" }}>Our <span className="text-gradient">Work</span></h1>
-        <p className="text-secondary">Explore independent projects, robust CMS builds, and modern applications.</p>
+    <div className={styles.portfolioContainer}>
+      <div className={styles.header}>
+        <motion.h1 
+          className="font-geek"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Our <span className="text-gradient">Work</span>
+        </motion.h1>
+        <motion.p 
+          className="text-secondary"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          A curated gallery of robust CMS builds, modern digital applications, and immersive experiences.
+        </motion.p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "32px" }}>
-        {portfolios.length > 0 ? (
-          portfolios.map((p) => (
-            <div key={p.id} className="glass-card" style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div className={styles.bentoGrid}>
+        {loading ? (
+          <div style={{ gridColumn: "1 / -1", textAlign: "center", padding: "100px", color: "var(--text-muted)" }}>
+            <motion.div animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 1, ease: "linear" }} style={{ display: "inline-block" }}>
+              <Terminal size={32} />
+            </motion.div>
+            <p style={{ marginTop: "16px" }}>Loading digital archives...</p>
+          </div>
+        ) : portfolios.length > 0 ? (
+          portfolios.map((p, i) => (
+            <motion.div 
+              key={p.id} 
+              className={styles.bentoCard}
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.1 * i, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              onClick={() => p.link ? window.open(p.link, '_blank') : null}
+            >
               {p.coverImage && (
-                <div style={{ width: "100%", height: "200px", borderRadius: "12px", overflow: "hidden" }}>
-                  <img src={p.coverImage} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div className={styles.bentoImageContainer}>
+                  <img src={p.coverImage} alt={p.title} className={styles.bentoImage} />
                 </div>
               )}
-              <h3 className="font-geek" style={{ fontSize: "1.4rem", marginBottom: "12px", color: "var(--text-primary)" }}>{p.title}</h3>
-              <p style={{ color: "var(--text-secondary)", lineHeight: 1.6, flexGrow: 1 }}>{p.description}</p>
-              {p.link && (
-                <a href={p.link} target="_blank" rel="noreferrer" style={{ marginTop: "20px", display: "inline-block", color: "var(--accent-cyan)", fontWeight: 500 }}>
-                  Live Demo →
-                </a>
-              )}
-            </div>
+              <div className={styles.bentoOverlay} />
+              
+              <div className={styles.bentoContent}>
+                <div className={styles.metaInfo}>
+                  {p.clientName && <span className={styles.clientBadge}>{p.clientName}</span>}
+                  {p.role && <span className={styles.roleText}>{p.role}</span>}
+                </div>
+                
+                <h3 className={`${styles.title} font-geek`}>{p.title}</h3>
+                <p className={styles.description}>{p.description}</p>
+                
+                {p.link && (
+                  <div className={styles.actionRow}>
+                    <span>View Live Details</span>
+                    <ArrowRight size={18} className={styles.arrowIcon} />
+                  </div>
+                )}
+              </div>
+            </motion.div>
           ))
         ) : (
-          <div className="glass-card" style={{ padding: "40px", gridColumn: "1 / -1", textAlign: "center", color: "var(--text-muted)" }}>
-            <Terminal size={48} style={{ margin: "0 auto 20px", opacity: 0.5 }} />
-            <p>Portfolio items will be fetched from the database and displayed here.</p>
+          <div className="glass-card" style={{ padding: "80px 40px", gridColumn: "1 / -1", textAlign: "center", color: "var(--text-muted)" }}>
+            <Terminal size={48} style={{ margin: "0 auto 24px", opacity: 0.3 }} />
+            <p>Portfolio architecture is established, awaiting data sync.</p>
           </div>
         )}
       </div>

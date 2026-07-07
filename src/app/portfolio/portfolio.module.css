@@ -1,0 +1,219 @@
+.portfolioContainer {
+  padding: 100px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 24px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bentoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  grid-auto-rows: 400px;
+  grid-auto-flow: dense;
+}
+
+@media (min-width: 1024px) {
+  .bentoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bentoCard {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+/* Default mobile spans */
+.bentoCard {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Specific PC Layouts to avoid empty gaps */
+@media (min-width: 1024px) {
+  /* Pattern: 
+     Item 1: Big Hero (2x2)
+     Item 2 & 3: Side squares (1x1)
+     Item 4: Full width banner (3x1)
+  */
+  
+  .bentoCard:nth-child(4n+1) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .bentoCard:nth-child(4n+2),
+  .bentoCard:nth-child(4n+3) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  
+  .bentoCard:nth-child(4n+4) {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+}
+
+
+.bentoImageContainer {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.bentoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: brightness(0.7) contrast(1.1);
+}
+
+.bentoCard:hover .bentoImage {
+  transform: scale(1.05);
+  filter: brightness(0.85);
+}
+
+/* Glassmorphism gradient layer under texts */
+.bentoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 15, 0) 0%, rgba(10, 10, 15, 0.4) 40%, rgba(10, 10, 15, 0.95) 100%);
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.bentoCard:hover .bentoOverlay {
+  opacity: 0.9;
+}
+
+.bentoContent {
+  padding: 32px;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .bentoContent {
+    padding: 24px;
+  }
+}
+
+.bentoCard:hover .bentoContent {
+  transform: translateY(-8px);
+}
+
+.metaInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.clientBadge {
+  background: rgba(0, 243, 255, 0.15);
+  color: var(--accent-cyan);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+.roleText {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  .bentoCard:nth-child(4n+1) .title,
+  .bentoCard:nth-child(4n+4) .title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .bentoCard:nth-child(4n+1) .description,
+  .bentoCard:nth-child(4n+4) .description {
+    font-size: 1.1rem;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+}
+
+.actionRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.bentoCard:hover .actionRow {
+  opacity: 1;
+}
+
+.arrowIcon {
+  transition: transform 0.3s ease;
+}
+
+.bentoCard:hover .arrowIcon {
+  transform: translateX(4px);
+}

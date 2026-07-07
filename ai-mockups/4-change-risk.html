@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 变更风险评估</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.risk-ring { width:100px; height:100px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; margin:0 auto; }
+.risk-factor { display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.risk-factor .score-bar { width:100px; height:6px; background:var(--bg-input); border-radius:3px; overflow:hidden; }
+.risk-factor .score-bar .fill { height:100%; border-radius:3px; }
+.impact-node { display:inline-flex; align-items:center; gap:4px; padding:4px 10px; border-radius:6px; font-size:11px; margin:3px; border:1px solid var(--border); background:var(--bg-card); }
+.impact-node.affected { border-color:var(--accent-orange); background:var(--accent-orange-dim); }
+.approval-step { display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); }
+.approval-step .step-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">AI</div>
+    <div class="nav-item">📊</div>
+    <div class="nav-item">🔍</div>
+    <div class="nav-item">📚</div>
+    <div class="nav-item">💬</div>
+    <div class="nav-item active">⚙️</div>
+    <div class="nav-item">📋</div>
+  </nav>
+  <div class="main-content">
+    <div class="topbar">
+      <div class="topbar-title">AI Change Risk Assessor <span>变更风险评估</span></div>
+      <div class="topbar-right"><span class="topbar-time">2026-04-08 22:45 CST</span><div class="topbar-avatar">ZX</div></div>
+    </div>
+    <div class="content">
+      <!-- Change summary bar -->
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-body" style="display:flex;align-items:center;gap:20px;padding:14px 18px">
+          <div>
+            <div style="font-size:11px;color:var(--text-muted)">变更编号</div>
+            <div style="font-size:14px;font-weight:600">CHG-2026-0408-003</div>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:11px;color:var(--text-muted)">变更内容</div>
+            <div style="font-size:13px;font-weight:500">user-auth-service v3.5.0 → v3.6.0 — 引入 OAuth2.0 多租户认证模块</div>
+          </div>
+          <div><div style="font-size:11px;color:var(--text-muted)">申请人</div><div>李明</div></div>
+          <div><div style="font-size:11px;color:var(--text-muted)">计划窗口</div><div>04-09 02:00-04:00</div></div>
+          <span class="tag tag-orange" style="font-size:12px;padding:4px 12px">待审批</span>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <!-- Risk Score -->
+        <div class="card">
+          <div class="card-header"><h3>🎯 AI 风险评分</h3><span class="tag tag-purple">AI 自动评估</span></div>
+          <div class="card-body" style="text-align:center">
+            <div class="risk-ring" style="border:4px solid var(--accent-orange);margin-bottom:12px">
+              <div style="font-size:28px;font-weight:700;color:var(--accent-orange)">72</div>
+              <div style="font-size:10px;color:var(--text-muted)">/ 100</div>
+            </div>
+            <div style="font-size:13px;font-weight:600;color:var(--accent-orange);margin-bottom:4px">中高风险</div>
+            <div style="font-size:11px;color:var(--text-muted)">建议：维护窗口执行 + 额外审批</div>
+            <div style="margin-top:16px;text-align:left">
+              <div class="risk-factor"><span>服务关键度 (40%)</span><div class="score-bar"><div class="fill" style="width:85%;background:var(--accent-red)"></div></div><span style="color:var(--accent-red)">85</span></div>
+              <div class="risk-factor"><span>历史失败率 (20%)</span><div class="score-bar"><div class="fill" style="width:40%;background:var(--accent-green)"></div></div><span style="color:var(--accent-green)">40</span></div>
+              <div class="risk-factor"><span>当前负载 (20%)</span><div class="score-bar"><div class="fill" style="width:65%;background:var(--accent-orange)"></div></div><span style="color:var(--accent-orange)">65</span></div>
+              <div class="risk-factor"><span>变更复杂度 (20%)</span><div class="score-bar"><div class="fill" style="width:80%;background:var(--accent-orange)"></div></div><span style="color:var(--accent-orange)">80</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Impact Analysis -->
+        <div class="card">
+          <div class="card-header"><h3>🔗 AI 影响面分析</h3></div>
+          <div class="card-body">
+            <div style="font-size:12px;color:var(--text-secondary);margin-bottom:12px">AI 基于服务依赖拓扑自动分析此变更的影响范围：</div>
+            <div style="text-align:center;margin-bottom:16px">
+              <div class="impact-node affected" style="font-weight:600">user-auth-service ⬆️</div>
+              <div style="font-size:18px;color:var(--text-muted);margin:4px 0">↓</div>
+              <div>
+                <span class="impact-node affected">login-api</span>
+                <span class="impact-node affected">session-mgr</span>
+                <span class="impact-node">payment-auth</span>
+              </div>
+              <div style="font-size:18px;color:var(--text-muted);margin:4px 0">↓</div>
+              <div>
+                <span class="impact-node">iOS App</span>
+                <span class="impact-node">Android App</span>
+                <span class="impact-node">HarmonyOS</span>
+                <span class="impact-node">Web</span>
+              </div>
+            </div>
+            <div style="background:var(--accent-orange-dim);padding:10px;border-radius:6px;font-size:12px">
+              <span style="color:var(--accent-orange);font-weight:600">⚠ AI 提醒：</span>
+              <span style="color:var(--text-secondary)">此变更直接影响登录流程，预估覆盖全部终端用户。建议在低峰期（02:00-04:00）执行，并准备回退方案。</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Approval & Recommendation -->
+        <div class="card">
+          <div class="card-header"><h3>📋 AI 建议 & 审批流</h3></div>
+          <div class="card-body">
+            <div style="background:var(--bg-input);padding:10px;border-radius:6px;margin-bottom:14px;font-size:12px;line-height:1.8;color:var(--text-secondary)">
+              <div style="color:var(--accent-blue);font-weight:600;margin-bottom:4px">🧠 AI 执行建议：</div>
+              1. 维护窗口 02:00-04:00 执行（低峰期流量 < 5%）<br>
+              2. 灰度策略：先切 10% 流量验证 15min<br>
+              3. 监控重点：登录成功率 / Session 创建速率 / RT<br>
+              4. 回退方案：保留 v3.5.0 镜像，异常时 2min 内回退
+            </div>
+            <div style="font-size:12px;font-weight:600;margin-bottom:8px">审批流程</div>
+            <div class="approval-step">
+              <div class="step-icon" style="background:var(--accent-green-dim);color:var(--accent-green)">✓</div>
+              <div><div style="font-size:12px;font-weight:500">L2 Team Lead 审批</div><div style="font-size:10px;color:var(--text-muted)">张旭 · 已通过 · 14:30</div></div>
+            </div>
+            <div class="approval-step">
+              <div class="step-icon" style="background:var(--accent-orange-dim);color:var(--accent-orange)">⏳</div>
+              <div><div style="font-size:12px;font-weight:500">运维经理 额外审批</div><div style="font-size:10px;color:var(--text-muted)">AI 建议：中高风险需额外审批</div></div>
+            </div>
+            <div class="approval-step" style="border:none">
+              <div class="step-icon" style="background:var(--border);color:var(--text-muted)">3</div>
+              <div><div style="font-size:12px;font-weight:500;color:var(--text-muted)">执行 & L2 实时监控</div><div style="font-size:10px;color:var(--text-muted)">计划 04-09 02:00</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- History comparison -->
+      <div class="card" style="margin-top:16px">
+        <div class="card-header"><h3>📎 AI 历史变更对照</h3><span style="font-size:11px;color:var(--text-muted)">基于相似变更的历史数据</span></div>
+        <div class="card-body" style="padding:0">
+          <table class="data-table">
+            <thead><tr><th>变更</th><th>时间</th><th>风险评分</th><th>结果</th><th>耗时</th><th>备注</th></tr></thead>
+            <tbody>
+              <tr><td>user-auth v3.4.0→v3.5.0</td><td>2026-02-15</td><td><span class="tag tag-green">45 低</span></td><td><span style="color:var(--accent-green)">✓ 成功</span></td><td>35min</td><td>功能增强，无架构变更</td></tr>
+              <tr><td>user-auth v3.2.0→v3.3.0</td><td>2025-11-20</td><td><span class="tag tag-orange">68 中高</span></td><td><span style="color:var(--accent-green)">✓ 成功</span></td><td>52min</td><td>JWT 算法升级，灰度成功</td></tr>
+              <tr><td>session-mgr v2.0→v2.1</td><td>2025-09-08</td><td><span class="tag tag-red">81 高</span></td><td><span style="color:var(--accent-red)">✗ 回退</span></td><td>1h 15min</td><td>Session 格式不兼容，触发回退</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

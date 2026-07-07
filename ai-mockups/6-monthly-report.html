@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 月度洞察报告</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.report-section { margin-bottom:20px; }
+.report-section h3 { font-size:14px; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+.insight-card { background:var(--bg-input); padding:12px 14px; border-radius:8px; margin-bottom:8px; border-left:3px solid; }
+.trend-item { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.trend-item:last-child { border:none; }
+.report-header { background:linear-gradient(135deg, #0a1628, #1a2a4a); padding:24px; border-radius:12px; margin-bottom:20px; }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">AI</div>
+    <div class="nav-item">📊</div>
+    <div class="nav-item">🔍</div>
+    <div class="nav-item">📚</div>
+    <div class="nav-item">💬</div>
+    <div class="nav-item">⚙️</div>
+    <div class="nav-item active">📋</div>
+  </nav>
+  <div class="main-content">
+    <div class="topbar">
+      <div class="topbar-title">AI Monthly Insight Report <span>月度 AI 洞察报告</span></div>
+      <div class="topbar-right">
+        <button class="btn btn-outline">📥 导出 PDF</button>
+        <button class="btn btn-primary">📧 发送报告</button>
+        <div class="topbar-avatar">ZX</div>
+      </div>
+    </div>
+    <div class="content">
+      <div class="report-header">
+        <div style="font-size:20px;font-weight:700;margin-bottom:4px">L2 运维月度洞察报告</div>
+        <div style="font-size:13px;color:var(--text-muted)">2026 年 3 月 · AI 自动生成 · 运维经理审核后发出</div>
+        <div style="display:flex;gap:30px;margin-top:16px">
+          <div><div style="font-size:10px;color:var(--text-muted)">事件总数</div><div style="font-size:22px;font-weight:700">156</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">SLA 达标率</div><div style="font-size:22px;font-weight:700;color:var(--accent-green)">99.4%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">平均 MTTR</div><div style="font-size:22px;font-weight:700">36 min</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">L2 FCR</div><div style="font-size:22px;font-weight:700;color:var(--accent-green)">88%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">变更成功率</div><div style="font-size:22px;font-weight:700;color:var(--accent-green)">99.5%</div></div>
+          <div><div style="font-size:10px;color:var(--text-muted)">AI 贡献率</div><div style="font-size:22px;font-weight:700;color:var(--accent-purple)">42%</div></div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <div class="report-section">
+            <h3>🔥 AI 识别的 Top-5 高频问题</h3>
+            <div class="insight-card" style="border-color:var(--accent-red)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">1. 认证服务 Session 相关问题</strong><span class="tag tag-red">18 次</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI 建议：Session 管理架构存在系统性风险，建议 L3 评估 Redis Cluster 高可用改造</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-orange)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">2. CDN 节点响应延迟</strong><span class="tag tag-orange">14 次</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI 建议：集中在华东节点，建议增加节点冗余或切换供应商</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-orange)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">3. HarmonyOS 端崩溃率偏高</strong><span class="tag tag-orange">11 次</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI 建议：主要集中在系统版本更新后的兼容性问题，建议增加版本回归测试用例</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-blue)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">4. 消息推送延迟/丢失</strong><span class="tag tag-blue">9 次</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI 建议：消息队列容量在高峰期接近阈值，建议评估扩容</div>
+            </div>
+            <div class="insight-card" style="border-color:var(--accent-blue)">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:12px">5. 第三方支付通道超时</strong><span class="tag tag-blue">7 次</span></div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI 建议：受第三方服务稳定性影响，建议增加多通道容灾切换</div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <h3>📈 KPI 月度趋势</h3>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">MTTR</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:30%;background:var(--accent-green)"></div></div></span><span style="width:80px;text-align:right">36min</span><span class="trend up" style="width:60px;text-align:right">↓ 15%</span></div>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">MTT Respond</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:20%;background:var(--accent-green)"></div></div></span><span style="width:80px;text-align:right">7min</span><span class="trend up" style="width:60px;text-align:right">↓ 22%</span></div>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">L2 FCR</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:88%;background:var(--accent-green)"></div></div></span><span style="width:80px;text-align:right">88%</span><span class="trend up" style="width:60px;text-align:right">↑ 3%</span></div>
+            <div class="trend-item"><span style="width:120px;color:var(--text-muted)">KB Hit Rate</span><span style="flex:1"><div class="progress-bar"><div class="fill" style="width:65%;background:var(--accent-blue)"></div></div></span><span style="width:80px;text-align:right">65%</span><span class="trend up" style="width:60px;text-align:right">↑ 5%</span></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="report-section">
+            <h3>🧠 AI 洞察与建议</h3>
+            <div class="card" style="margin-bottom:12px">
+              <div class="card-body">
+                <div style="font-size:12px;font-weight:600;color:var(--accent-purple);margin-bottom:6px">📊 效率洞察</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
+                  • MTTR 较上月下降 15%，主要归因于 AI 方案推荐命中率提升（58% → 65%）<br>
+                  • P2/P3 事件 L2 独立解决率高达 95%，说明知识库建设效果显著<br>
+                  • 夜间值班 MTTR 与白天基本持平（39min vs 35min），AI 助手发挥作用
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-bottom:12px">
+              <div class="card-body">
+                <div style="font-size:12px;font-weight:600;color:var(--accent-orange);margin-bottom:6px">⚠ 风险预警</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
+                  • MySQL 主库连接池使用率月均增长 3%，预计 5 月将触及 85% 警戒线<br>
+                  • HarmonyOS 6.0 发布后需关注兼容性，历史经验每次大版本更新后 2 周内事件量增加 40%<br>
+                  • 4 月有计划的大版本发布，建议提前安排 Layer 2 专家待命
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div style="font-size:12px;font-weight:600;color:var(--accent-green);margin-bottom:6px">✅ 改进建议</div>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.8">
+                  • 将 Top-1 高频问题（Session 管理）升级为 Problem 记录，推动 L3 架构优化<br>
+                  • 针对 HarmonyOS 兼容性问题，建议新增 15 条 Runbook 覆盖常见异常场景<br>
+                  • 建议下月将 AI 告警降噪规则扩展至消息推送模块<br>
+                  • 知识库新增 38 条，但 12 条旧条目标记待更新，建议本周完成清理
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="report-section">
+            <h3>📅 下月重点关注</h3>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px">
+              <div style="font-size:12px;color:var(--text-secondary);line-height:2">
+                <span class="status-dot orange"></span> 4/15 user-auth v3.6.0 大版本发布（高风险变更）<br>
+                <span class="status-dot blue"></span> 4/18-20 春季营销活动（预计流量 +60%）<br>
+                <span class="status-dot blue"></span> 4/22 HarmonyOS 6.0 适配验证窗口<br>
+                <span class="status-dot green"></span> 4/30 月度复盘会议
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

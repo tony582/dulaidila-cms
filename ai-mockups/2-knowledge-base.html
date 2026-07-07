@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 知识库语义搜索</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.result-card { padding: 14px 16px; border-bottom: 1px solid var(--border); transition: background .2s; cursor: pointer; }
+.result-card:hover { background: var(--bg-card-hover); }
+.result-score { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.result-card h4 { font-size: 13px; margin: 6px 0 4px; }
+.result-meta { font-size: 11px; color: var(--text-muted); display: flex; gap: 12px; margin-top: 8px; }
+.kb-stat { text-align: center; padding: 12px; }
+.kb-stat .num { font-size: 22px; font-weight: 700; }
+.kb-stat .lab { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+.runbook-item { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 12px; display: flex; align-items: center; gap: 8px; }
+.runbook-item:hover { background: var(--bg-card-hover); cursor: pointer; }
+.runbook-icon { color: var(--accent-green); }
+</style>
+</head>
+<body>
+<div class="app-layout">
+  <nav class="sidebar">
+    <div class="logo">AI</div>
+    <div class="nav-item">📊</div>
+    <div class="nav-item">🔍</div>
+    <div class="nav-item active">📚</div>
+    <div class="nav-item">💬</div>
+    <div class="nav-item">⚙️</div>
+    <div class="nav-item">📋</div>
+  </nav>
+  <div class="main-content">
+    <div class="topbar">
+      <div class="topbar-title">AI Knowledge Base <span>知识库语义搜索</span></div>
+      <div class="topbar-right">
+        <span class="topbar-time">2026-04-08 22:45 CST</span>
+        <div class="topbar-avatar">ZX</div>
+      </div>
+    </div>
+    <div class="content">
+      <!-- Search -->
+      <div style="margin-bottom:20px">
+        <div class="search-wrapper">
+          <span class="icon">🔍</span>
+          <input class="search-input" value="登录接口响应时间突然变长，用户反馈无法登录" style="padding-left:36px;font-size:14px;height:44px">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <span class="tag tag-blue">语义搜索</span>
+          <span class="tag" style="background:var(--border);color:var(--text-secondary)">全部模块</span>
+          <span class="tag" style="background:var(--border);color:var(--text-secondary)">全部平台</span>
+          <span class="tag" style="background:var(--border);color:var(--text-secondary)">最近 6 个月</span>
+        </div>
+      </div>
+
+      <div class="grid-7-5">
+        <!-- Left: Results -->
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <h3>搜索结果 · 5 条匹配</h3>
+              <span style="font-size:11px;color:var(--text-muted)">耗时 0.23s</span>
+            </div>
+            <div class="card-body" style="padding:0">
+              <div class="result-card">
+                <div><span class="result-score" style="background:var(--accent-green-dim);color:var(--accent-green)">98% 匹配</span></div>
+                <h4>Auth Service 登录接口 RT 飙升至 5s — Redis Session 过期策略异常</h4>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+                  <strong>根因：</strong>Redis 会话存储的 TTL 策略被误改为永不过期，导致内存使用率达 95%，读取延迟从 1ms 上升至 800ms<br>
+                  <strong>解决：</strong>恢复 TTL 配置（30min），执行过期会话清理脚本，RT 恢复至 200ms 以内
+                </div>
+                <div class="result-meta">
+                  <span>📅 2025-11-18</span><span class="tag tag-orange">P1</span><span class="tag tag-blue">auth-service</span><span class="tag tag-purple">Redis</span><span>解决耗时 45min</span>
+                </div>
+              </div>
+              <div class="result-card">
+                <div><span class="result-score" style="background:var(--accent-blue-dim);color:var(--accent-blue)">91% 匹配</span></div>
+                <h4>登录成功率降至 96% — JWT Token 验证服务 CPU 打满</h4>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+                  <strong>根因：</strong>新版本引入的 Token 加密算法资源消耗过高，高峰期 CPU 达 100%<br>
+                  <strong>解决：</strong>回退加密算法 + 水平扩容 2 个实例
+                </div>
+                <div class="result-meta">
+                  <span>📅 2025-08-22</span><span class="tag tag-red">P0</span><span class="tag tag-blue">auth-service</span><span class="tag tag-purple">JWT</span><span>解决耗时 1h 20min</span>
+                </div>
+              </div>
+              <div class="result-card">
+                <div><span class="result-score" style="background:var(--accent-blue-dim);color:var(--accent-blue)">85% 匹配</span></div>
+                <h4>Android 端登录页白屏 — 网关 SSL 证书过期</h4>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+                  <strong>根因：</strong>API 网关 SSL 证书到期未续签，Android 端强校验导致连接失败<br>
+                  <strong>解决：</strong>紧急更换证书 + 设置证书到期前 30 天提醒
+                </div>
+                <div class="result-meta">
+                  <span>📅 2025-06-09</span><span class="tag tag-red">P0</span><span class="tag tag-green">Android</span><span class="tag tag-purple">SSL</span><span>解决耗时 25min</span>
+                </div>
+              </div>
+              <div class="result-card">
+                <div><span class="result-score" style="background:rgba(100,116,139,0.15);color:var(--text-secondary)">79% 匹配</span></div>
+                <h4>HarmonyOS 端登录后闪退 — HMS Core Push SDK 冲突</h4>
+                <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">
+                  <strong>根因：</strong>HMS Core 版本升级后与旧版 Push SDK 冲突，登录后初始化 Push 时崩溃<br>
+                  <strong>解决：</strong>升级 Push SDK 至兼容版本 + 增加初始化异常兜底
+                </div>
+                <div class="result-meta">
+                  <span>📅 2025-04-15</span><span class="tag tag-orange">P1</span><span class="tag tag-green">HarmonyOS</span><span class="tag tag-purple">HMS Core</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right sidebar -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <!-- KB Stats -->
+          <div class="card">
+            <div class="card-header"><h3>📊 知识库概览</h3></div>
+            <div class="card-body" style="padding:0">
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border)">
+                <div class="kb-stat"><div class="num" style="color:var(--accent-blue)">1,247</div><div class="lab">总条目</div></div>
+                <div class="kb-stat"><div class="num" style="color:var(--accent-green)">63%</div><div class="lab">命中率</div></div>
+                <div class="kb-stat"><div class="num" style="color:var(--accent-orange)">+38</div><div class="lab">本月新增</div></div>
+              </div>
+              <div style="padding:10px 14px;font-size:11px;color:var(--text-muted)">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span>auth 认证模块</span><span>312 条</span></div>
+                <div class="progress-bar"><div class="fill" style="width:25%;background:var(--accent-blue)"></div></div>
+                <div style="display:flex;justify-content:space-between;margin:8px 0 4px"><span>payment 支付模块</span><span>198 条</span></div>
+                <div class="progress-bar"><div class="fill" style="width:16%;background:var(--accent-green)"></div></div>
+                <div style="display:flex;justify-content:space-between;margin:8px 0 4px"><span>HarmonyOS 专项</span><span>156 条</span></div>
+                <div class="progress-bar"><div class="fill" style="width:12%;background:var(--accent-orange)"></div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Recommended Runbooks -->
+          <div class="card">
+            <div class="card-header"><h3>📖 AI 推荐 Runbook</h3><span class="tag tag-green">自动匹配</span></div>
+            <div class="card-body" style="padding:0">
+              <div class="runbook-item"><span class="runbook-icon">▶</span><div><strong>RB-AUTH-003</strong> 登录接口 RT 异常排查<div style="color:var(--text-muted);font-size:10px;margin-top:2px">预计耗时 15min · 最近使用 3 天前</div></div></div>
+              <div class="runbook-item"><span class="runbook-icon">▶</span><div><strong>RB-REDIS-001</strong> Redis 内存/连接数检查<div style="color:var(--text-muted);font-size:10px;margin-top:2px">预计耗时 10min · 最近使用 1 周前</div></div></div>
+              <div class="runbook-item"><span class="runbook-icon">▶</span><div><strong>RB-AUTH-007</strong> JWT/Session 异常紧急处理<div style="color:var(--text-muted);font-size:10px;margin-top:2px">预计耗时 20min · 最近使用 2 周前</div></div></div>
+            </div>
+          </div>
+          <!-- AI quality alert -->
+          <div class="card">
+            <div class="card-header"><h3>⚠️ AI 质量提醒</h3></div>
+            <div class="card-body" style="font-size:12px;color:var(--text-secondary)">
+              <div style="margin-bottom:8px"><span class="tag tag-orange" style="margin-right:4px">待更新</span> 12 条知识引用了已废弃的 auth-service v1 API</div>
+              <div><span class="tag tag-orange" style="margin-right:4px">待更新</span> 8 条 HarmonyOS 知识基于 API 9，当前已升级至 API 12</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

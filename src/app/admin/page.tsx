@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { PenSquare, LayoutDashboard, MessageSquare, Briefcase } from "lucide-react";
+import { PenSquare, LayoutDashboard, MessageSquare, Briefcase, Mail } from "lucide-react";
 import styles from "./admin.module.css";
 import CommentsManager from "@/components/admin/CommentsManager";
 
@@ -24,6 +24,7 @@ export default function AdminDashboard() {
           <Link href="/admin" className={styles.activeNav}><LayoutDashboard size={18}/> Overview</Link>
           <Link href="/admin/editor" className={styles.navItem}><PenSquare size={18}/> Write Post</Link>
           <Link href="/admin/comments" className={styles.navItem}><MessageSquare size={18}/> Comments</Link>
+          <Link href="/admin/messages" className={styles.navItem}><Mail size={18}/> Contact Inbox</Link>
           <Link href="/admin/portfolio" className={styles.navItem}><Briefcase size={18}/> Portfolio</Link>
         </nav>
       </aside>
